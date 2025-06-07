@@ -3,10 +3,15 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
+from drf_spectacular.utils import extend_schema
 
 from .serializers import RegisterSerializer, LoginSerializer, UserSerializer
 
 class RegisterView(APIView):
+    @extend_schema(
+        request=RegisterSerializer,
+        responses={201: RegisterSerializer},
+    )
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
@@ -21,6 +26,10 @@ class RegisterView(APIView):
 class LoginView(ObtainAuthToken):
     serializer_class = LoginSerializer
 
+    @extend_schema(
+        request=RegisterSerializer,
+        responses={201: RegisterSerializer},
+    )
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data, context={'request': request})
         serializer.is_valid(raise_exception=True)
