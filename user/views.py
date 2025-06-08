@@ -1,11 +1,14 @@
+from rest_framework import viewsets, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
 from drf_spectacular.utils import extend_schema
-
+from user.models import User
+from user.serializers import UserSerializer
 from .serializers import RegisterSerializer, LoginSerializer, UserSerializer
+
 
 class RegisterView(APIView):
     @extend_schema(
@@ -39,3 +42,9 @@ class LoginView(ObtainAuthToken):
         return Response({
             "token": token.key,
         }, status=status.HTTP_200_OK)
+
+
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]

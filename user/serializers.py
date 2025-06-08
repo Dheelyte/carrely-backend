@@ -48,6 +48,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ('name',)
 
+
 class UserSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer(read_only=True)
     
