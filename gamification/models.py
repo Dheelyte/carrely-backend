@@ -1,5 +1,9 @@
+from django.contrib.auth.backends import get_user_model
 from django.db import models
-from user.models import User
+
+
+User = get_user_model()
+
 
 class UserStreak(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

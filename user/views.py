@@ -1,3 +1,4 @@
+from django.contrib.auth.backends import get_user_model
 from rest_framework import viewsets, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -5,9 +6,11 @@ from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
 from drf_spectacular.utils import extend_schema
-from user.models import User
 from user.serializers import UserSerializer
 from .serializers import RegisterSerializer, LoginSerializer, UserSerializer
+
+
+User = get_user_model()
 
 
 class RegisterView(APIView):

@@ -1,6 +1,10 @@
+from django.contrib.auth.backends import get_user_model
 from django.db import models
-from user.models import User
 from carrels.models import SharedContent
+
+
+User = get_user_model()
+
 
 class FeedItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

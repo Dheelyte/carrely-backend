@@ -40,7 +40,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'drf_spectacular',
+
     'user.apps.UserConfig',
+    'carrels.apps.CarrelsConfig',
+    'feed.apps.FeedConfig',
+    'gamification.apps.GamificationConfig',
+    'social.apps.SocialConfig',
 ]
 
 MIDDLEWARE = [
