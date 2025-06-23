@@ -20,5 +20,5 @@ class UserBadgeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserBadge
-        fields = ['id', 'user', 'badge', 'awarded_at']
-        read_only_fields = ['user', 'badge', 'awarded_at']
+        fields = ['id', 'user', 'badge',]
+        read_only_fields = ['user', 'badge',]

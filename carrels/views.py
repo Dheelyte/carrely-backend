@@ -1,14 +1,17 @@
 from rest_framework.response import Response
 from rest_framework import viewsets, permissions
+from drf_spectacular.utils import extend_schema_view, extend_schema
+
 from carrels.models import SharedContent, ContentComment, ContentUpvote, Carrel
 from carrels.serializers import (
-    SharedContentSerializer, SharedContentCreateSerializer, ContentCommentSerializer, ContentUpvoteSerializer, CarrelSerializer
+    SharedContentSerializer, SharedContentCreateSerializer, ContentCommentSerializer, ContentUpvoteSerializer
 )
 
 
 class CarrelViewSet(viewsets.ModelViewSet):
+    
     queryset = Carrel.objects.all()
-    serializer_class = CarrelSerializer
+    serializer_class = SharedContentSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):

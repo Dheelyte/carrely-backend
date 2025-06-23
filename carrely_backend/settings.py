@@ -43,9 +43,9 @@ INSTALLED_APPS = [
 
     'user.apps.UserConfig',
     'carrels.apps.CarrelsConfig',
-    'feed.apps.FeedConfig',
+    #'feed.apps.FeedConfig',
     'gamification.apps.GamificationConfig',
-    'social.apps.SocialConfig',
+    #'social.apps.SocialConfig',
 ]
 
 MIDDLEWARE = [
